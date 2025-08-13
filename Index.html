@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Your Life - Student Loans Made Simple</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23f0f8ff" width="1000" height="600"/><g fill="%236699ff" opacity="0.1"><circle cx="200" cy="150" r="50"/><circle cx="800" cy="400" r="80"/><circle cx="500" cy="100" r="30"/></g></svg>');
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s;
+            animation: slideInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Features */
+        .features {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Loan Calculator */
+        .calculator {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .calc-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .calc-result {
+            background: #667eea;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Application Form */
+        .application {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            margin: 1rem 0;
+        }
+
+        .submit-btn {
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 4rem 0;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">Easy Your Life</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Benefits</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#apply">Apply Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Easy Your Life</h1>
+            <p>Quick & Affordable Student Loans for University of Buea and Southwest Universities</p>
+            <a href="#apply" class="cta-button">Apply for Loan Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Easy Your Life?</h2>
+            <p class="section-subtitle">We understand student financial challenges and provide tailored solutions</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>School Fees Made Easy</h3>
+                    <p>Get instant funds for tuition payments, registration fees, and academic requirements without stress.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Textbooks & Handouts</h3>
+                    <p>Access money for essential course materials, handouts, and reference books for your studies.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Approval</h3>
+                    <p>Get approved in 24 hours with minimal documentation. No lengthy bank processes or guarantors needed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Flexible Amounts</h3>
+                    <p>Borrow from 500 to 500,000 FCFA based on your needs and repayment capacity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Student-Friendly Terms</h3>
+                    <p>Competitive interest rates designed for students with flexible repayment periods.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Emergency Support</h3>
+                    <p>Quick financial assistance for unexpected expenses, medical bills, or urgent academic needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Calculator -->
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <h2 class="section-title">Loan Calculator</h2>
+            <p class="section-subtitle">Calculate your loan amount and interest</p>
+            
+            <div class="calc-container">
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount (FCFA)</label>
+                    <select id="loanAmount" onchange="calculateLoan()">
+                        <option value="500">500 FCFA</option>
+                        <option value="1000">1,000 FCFA</option>
+                        <option value="5000">5,000 FCFA</option>
+                        <option value="10000">10,000 FCFA</option>
+                        <option value="25000">25,000 FCFA</option>
+                        <option value="50000">50,000 FCFA</option>
+                        <option value="100000">100,000 FCFA</option>
+                        <option value="250000">250,000 FCFA</option>
+                        <option value="500000">500,000 FCFA</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loanPeriod">Repayment Period</label>
+                    <select id="loanPeriod" onchange="calculateLoan()">
+                        <option value="1">1 Month (8% interest)</option>
+                        <option value="3">3 Months (12% interest)</option>
+                        <option value="6">6 Months (18% interest)</option>
+                        <option value="12">12 Months (25% interest)</option>
+                        <option value="24">24 Months (35% interest)</option>
+                    </select>
+                </div>
+                
+                <div class="calc-result" id="loanResult">
+                    <h3>Loan Summary</h3>
+                    <p>Principal Amount: <span id="principal">500 FCFA</span></p>
+                    <p>Interest Rate: <span id="interestRate">8%</span></p>
+                    <p>Total Interest: <span id="totalInterest">40 FCFA</span></p>
+                    <p><strong>Total Repayment: <span id="totalRepayment">540 FCFA</span></strong></p>
+                    <p>Monthly Payment: <span id="monthlyPayment">540 FCFA</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="apply" class="application">
+        <div class="container">
+            <h2 class="section-title">Loan Application Form</h2>
+            <p class="section-subtitle">Complete this form to apply for your student loan</p>
+            
+            <div class="form-container">
+                <form id="loanApplication">
+                    <h3 style="margin-bottom: 1.5rem; color: #667eea;">Personal Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Current Address *</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    
+                    <h3 style="margin: 2rem 0 1.5rem; color: #667eea;">Academic Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="university">University *</label>
+                            <select id="university" required>
+                                <option value="">Select University</option>
+                                <option value="University of Buea">University of Buea</option>
+                                <option value="University of Bamenda">University of Bamenda</option>
+                                <option value="Catholic University of Cameroon">Catholic University of Cameroon</option>
+                                <option value="Other">Other Southwest University</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentId">Student ID Number *</label>
+                            <input type="text" id="studentId" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="faculty">Faculty/Department *</label>
+                            <input type="text" id="faculty" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Academic Level *</label>
+                            <select id="level" required>
+                                <option value="">Select Level</option>
+                                <option value="Level 1">Level 1</option>
+                                <option value="Level 2">Level 2</option>
+                                <option value="Level 3">Level 3</option>
+                                <option value="Level 4">Level 4</option>
+                                <option value="Level 5">Level 5</option>
+                                <option value="Masters">Masters</option>
+                                <option value="PhD">PhD</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 2rem 0 1.5rem; color: #667eea;">Loan Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="requestedAmount">Requested Loan Amount (FCFA) *</label>
+                            <select id="requestedAmount" required>
+                                <option value="">Select Amount</option>
+                                <option value="500">500 FCFA</option>
+                                <option value="1000">1,000 FCFA</option>
+                                <option value="5000">5,000 FCFA</option>
+                                <option value="10000">10,000 FCFA</option>
+                                <option value="25000">25,000 FCFA</option>
+                                <option value="50000">50,000 FCFA</option>
+                                <option value="100000">100,000 FCFA</option>
+                                <option value="250000">250,000 FCFA</option>
+                                <option value="500000">500,000 FCFA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="repaymentPeriod">Preferred Repayment Period *</label>
+                            <select id="repaymentPeriod" required>
+                                <option value="">Select Period</option>
+                                <option value="1">1 Month</option>
+                                <option value="3">3 Months</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months</option>
+                                <option value="24">24 Months</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loanPurpose">Purpose of Loan *</label>
+                        <select id="loanPurpose" required>
+                            <option value="">Select Purpose</option>
+                            <option value="School Fees">School Fees/Tuition</option>
+                            <option value="Textbooks">Textbooks & Course Materials</option>
+                            <option value="Handouts">Handouts & Photocopying</option>
+                            <option value="Registration">Registration Fees</option>
+                            <option value="Accommodation">Accommodation</option>
+                            <option value="Emergency">Emergency Expenses</option>
+                            <option value="Other">Other Academic Expenses</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" required>
+                            I agree to the terms and conditions of the loan agreement *
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" required>
+                            I confirm that all information provided is accurate and truthful *
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Loan Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get in Touch</h2>
+            <p class="section-subtitle" style="color: #ccc;">Contact us for quick loan processing and support</p>
+            
+            <div class="contact-info">
+                <div>
+                    <h3>📞 Phone Numbers</h3>
+                    <p>+237 678 483 499</p>
+                    <p>+237 657 781 170</p>
+                </div>
+                <div>
+                    <h3>📧 Email</h3>
+                    <p>afotiaisrael19@gmail.com</p>
+                </div>
+                <div>
+                    <h3>🕒 Response Time</h3>
+                    <p>24 Hours Maximum</p>
+                    <p>Emergency: Same Day</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function calculateLoan() {
+            const amount = parseInt(document.getElementById('loanAmount').value);
+            const period = parseInt(document.getElementById('loanPeriod').value);
+            
+            let interestRate;
+            switch(period) {
+                case 1: interestRate = 8; break;
+                case 3: interestRate = 12; break;
+                case 6: interestRate = 18; break;
+                case 12: interestRate = 25; break;
+                case 24: interestRate = 35; break;
+                default: interestRate = 8;
+            }
+            
+            const totalInterest = (amount * interestRate) / 100;
+            const totalRepayment = amount + totalInterest;
+            const monthlyPayment = totalRepayment / period;
+            
+            document.getElementById('principal').textContent = amount.toLocaleString() + ' FCFA';
+            document.getElementById('interestRate').textContent = interestRate + '%';
+            document.getElementById('totalInterest').textContent = totalInterest.toLocaleString() + ' FCFA';
+            document.getElementById('totalRepayment').textContent = totalRepayment.toLocaleString() + ' FCFA';
+            document.getElementById('monthlyPayment').textContent = Math.round(monthlyPayment).toLocaleString() + ' FCFA';
+        }
+
+        document.getElementById('loanApplication').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! We will contact you within 24 hours to process your loan request.');
+        });
+
+        // Initialize calculator
+        calculateLoan();
+    </script>
+</body>
+</html>
